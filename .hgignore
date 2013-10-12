@@ -1,0 +1,23 @@
+syntax: glob
+*.pdf
+*.mp4
+*.zip
+*.tar
+*.o
+*.gz
+*.pyc
+*.jpg
+
+COMP/*/grading
+lexer
+mycoolc
+mycoolc2
+parser
+semant
+cgen
+
+PGM/samiam
+
+ML/*/*.mat
+
+racket-5.3.3-bin-i386-linux-ubuntu-karmic.sh

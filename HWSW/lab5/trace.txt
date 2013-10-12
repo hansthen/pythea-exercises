@@ -1,0 +1,2040 @@
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7e03f
+DUMMY         : 0x7fd5c4b7e038
+0x7fd5c4b7e018: 0x00000020 2 0	FREE	next: (nil), prev: (nil)
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00001020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e018: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000820 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x800
+FREE_LIST_HEAD: 0x7fd5c4b7f018
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7f018: 0x00000020 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e818: 0x38
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b7f03f
+DUMMY         : 0x7fd5c4b7f038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000007c8 2 0	FREE	next: 0x7fd5c4b7f018, prev: (nil)
+0x7fd5c4b7f018: 0x00000020 0 0	FREE	next: (nil), prev: 0x7fd5c4b7e850
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+FREE_LIST_HEAD: 0x7fd5c4b7e850
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x000017e8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7e850: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 1	ALLOCATED
+0x7fd5c4b7e818: 0x00000038 2 1	ALLOCATED
+0x7fd5c4b7e850: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7f038
+END OF HEAP
+
+before request more space
+FREE_LIST_HEAD: 0x7fd5c4b7e818
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8003f
+DUMMY         : 0x7fd5c4b80038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: 0x7fd5c4b7f840, prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: (nil)
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000007f8 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e018
+END OF HEAP
+
+after request more space
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+splitting an allocated free block
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+FREE_LIST_HEAD: 0x7fd5c4b7f840
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b7f840
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x000017f8 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+
+-------------------
+after allocating 0x7fd5c4b7f840: 0xff0
+FREE_LIST_HEAD: 0x7fd5c4b80830
+heap_start    : 0x7fd5c4b7e010
+heap_end      : 0x7fd5c4b8103f
+DUMMY         : 0x7fd5c4b81038
+0x7fd5c4b7e018: 0x00000800 2 0	FREE	next: (nil), prev: 0x7fd5c4b7e818
+0x7fd5c4b7e818: 0x00000038 0 0	FREE	next: 0x7fd5c4b7e018, prev: 0x7fd5c4b80830
+0x7fd5c4b7e850: 0x00000ff0 0 1	ALLOCATED
+0x7fd5c4b7f840: 0x00000ff0 2 1	ALLOCATED
+0x7fd5c4b80830: 0x00000808 2 0	FREE	next: 0x7fd5c4b7e818, prev: 0x7fd5c4b7e018
+END OF HEAP
+

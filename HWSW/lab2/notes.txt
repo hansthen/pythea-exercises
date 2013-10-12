@@ -1,0 +1,27 @@
+phase_2
+sscanf converts the input string to numbers
+these are then stored as arguments in the pointers that are the past arguments to sscanf
+eax contains the return value of the function.
+
+after read_six_numbers the results are in the first six words after %rsp.
+
+phase_3:
+again, but points further into the format string, so that it only reads two strings.
+
+jmpq   *0x401b60(,%rax,8) 
+this is a jump table.
+I think %rax is the second argument of the calling sequence.
+NOTE: Actually %rax is the return value from the previous syscall.
+
+On this input (with %rax = 2), it jumps to <phase_3+118>.
+
+phase_4
+The format is stored in: 0x400ab0
+`od -Ax -c bomb` | less shows this to be:
+377   % 002 032      \0
+
+phase_5
+
+Something is done with an array at 001ba0
+001ba0 000a 0000 0002 0000 000e 0000 0007 0000
+001bb0 0008 0000 000c 0000 000f 0000 000b 0000

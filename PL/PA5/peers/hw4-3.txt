@@ -1,0 +1,102 @@
+
+#lang racket
+
+(provide (all-defined-out)) ;; so we can put tests in a second file
+
+;; put your code below
+
+; Question 1
+(define (sequence low high stride)
+  (if (> low high)
+      null
+      (cons low (sequence (+ low stride) high stride))))
+
+
+; Question 2
+(define (string-append-map xs suffix)
+  (map (lambda (x) (string-append x suffix)) xs))
+
+; Question 3
+(define (list-nth-mod xs n)
+  (cond [(< n 0) (error "list-nth-mod: negative number")]
+        [(null? xs) (error "list-nth-mod: empty list")]
+        [#t (let ([i (remainder n (length xs))])
+              (car (list-tail xs i)))]))
+
+; Question 4
+(define (stream-for-n-steps s n)
+  (let ([str (s)])
+    (if (= n 0)
+        null
+        (cons (car str) (stream-for-n-steps (cdr str) (- n 1))))))
+
+; Question 5
+(define funny-number-stream
+  (letrec ([f (lambda (x) 
+               (cons 
+                (if (= 0 (remainder x 5)) (- x) x) 
+                (lambda () (f (+ 1 x)))))])
+    (lambda () (f 1))))
+
+; Question 6
+(define dan-then-dog
+  (letrec ([dan (lambda () (cons "dan.jpg" dog))]
+           [dog (lambda () (cons "dog.jpg" dan))])
+    dan))
+
+; Question 7
+(define (stream-add-zero s)
+  (letrec ([f (lambda (pr) 
+                (cons (cons 0 (car pr)) (lambda () (f ((cdr pr))))))])
+    (lambda () (f (s)))))
+                                  
+  
+; Question 8
+(define (cycle-lists xs ys)
+  (letrec ([f (lambda (n) (cons 
+                           (cons (list-nth-mod xs n) (list-nth-mod ys n)) 
+                           (lambda () (f (+ n 1)))))])
+    (lambda () (f 0))))
+
+; Question 9
+(define (vector-assoc v vec)
+  (letrec ([len (vector-length vec)]
+           [iter (lambda (pos)
+                       (cond [(>= pos len) #f]
+                             [(and (pair? (vector-ref vec pos)) (equal? (car (vector-ref vec pos)) v)) (vector-ref vec pos)]
+                             [#t (iter (+ pos 1))]))])
+    (iter 0)))
+
+
+; Question 10
+(define (cached-assoc xs n)
+  (letrec ([cache (make-vector n #f)]
+           [replace-cache 0]
+           [f (lambda (v) (let ([cached-ans (vector-assoc v cache)])
+                            (if cached-ans
+                                cached-ans
+                                (let ([assoc-ans (assoc v xs)])
+                                  (if assoc-ans
+                                      (begin (vector-set! cache replace-cache assoc-ans)
+                                             (set! replace-cache (remainder (+ 1 replace-cache) n))
+                                             assoc-ans)
+                                      #f)))))])
+    f))
+
+                                
+; Question 11 (Challenge problem)
+(define-syntax while-less
+  (syntax-rules (do)
+    [(while-less e1 do e2)
+     (letrec ([x e1] ; evaluate e1 once only
+              [f (lambda () (if (>= e2 x) #t (f)))] ; evaluate e2 every comparison (minimum once)
+              )
+       (f))]))
+
+
+
+          
+
+  
+      
+        

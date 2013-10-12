@@ -1,0 +1,43 @@
+# notes on bang.txt
+
+when entering getbuf, the following values are on the stack:
+rbp            0x7fffffffbb70   0x7fffffffbb70
+rsp            0x7fffffffbb48   0x7fffffffbb48
+
+after going back on the frame: the following values are in the registers:
+rax            0x0  0
+rbx            0x708646e    117990510
+rcx            0x24 36
+rdx            0x0  0
+rsi            0x7fffffffbaf3   140737488337651
+rdi            0x31 49
+rbp            0x3131313131313131   0x3131313131313131
+rsp            0x7fffffffbb50   0x7fffffffbb50
+r8             0x7fffffffbad0   140737488337616
+r9             0x0  0
+r10            0x22 34
+r11            0x246    582
+r12            0x607f80 6324096
+r13            0x7fffffffe210   140737488347664
+r14            0x0  0
+r15            0x0  0
+rip            0x7fffffffbb20   0x7fffffffbb20
+eflags         0x10246  [ PF ZF IF RF ]
+cs             0x33 51
+ss             0x2b 43
+ds             0x0  0
+es             0x0  0
+fs             0x0  0
+gs             0x0  0
+
+Of these rsp is important, because rsp is used to find the return address for the return.
+(Or is it rbp?).
+
+I can see rbp is overwritten with some random value from the stack.
+
+See also this link:
+http://stackoverflow.com/questions/11506799/stack-resident-buffer-overflow-on-64-bit
+http://www.classes.cs.uchicago.edu/archive/2009/spring/22620-1/docs/handout-03.pdf
+
+
+

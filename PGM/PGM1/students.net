@@ -1,0 +1,76 @@
+net
+{
+	propagationenginegenerator1791944048146838126L = "edu.ucla.belief.approx.BeliefPropagationSettings@271b72b5";
+	recoveryenginegenerator6944530267470113528l = "edu.ucla.util.SettingsImpl@9482aa9";
+	node_size = (130.0 55.0);
+}
+
+node Difficulty
+{
+	states = ("d0" "d1" );
+	position = (201 -73);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "D";
+	DSLxSUBMODEL = "Root Submodel";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	diagnosistype = "AUXILIARY";
+}
+node Letter
+{
+	states = ("l0" "l1" );
+	position = (355 -408);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable3";
+	label = "L";
+	DSLxSUBMODEL = "Root Submodel";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	diagnosistype = "AUXILIARY";
+}
+node Grade
+{
+	states = ("g1" "g2" "g3" );
+	position = (359 -225);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable2";
+	label = "G";
+	DSLxSUBMODEL = "Root Submodel";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	diagnosistype = "AUXILIARY";
+}
+node Intelligence
+{
+	states = ("i0" "i1" );
+	position = (474 -78);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable0";
+	label = "I";
+	DSLxSUBMODEL = "Root Submodel";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	diagnosistype = "AUXILIARY";
+}
+potential ( Difficulty | )
+{
+	data = (	0.6	0.4	);
+}
+potential ( Letter | Grade )
+{
+	data = ((	0.1	0.9	)
+		(	0.4	0.6	)
+		(	0.99	0.01	));
+}
+potential ( Grade | Difficulty Intelligence )
+{
+	data = (((	0.3	0.4	0.3	)
+		(	0.9	0.08	0.02	))
+		((	0.05	0.25	0.7	)
+		(	0.5	0.3	0.2	)));
+}
+potential ( Intelligence | )
+{
+	data = (	0.7	0.3	);
+}

@@ -1,0 +1,18 @@
+K class variables are the classes of the poses.
+An action sequence is a sequence of poses:
+   But each of these poses can belong to a different series of classes.
+
+So an action sequence [actionData(i)]
+   contains a sequence of indices into class probabilities
+   the first pose is:
+      ClassProb(1,:) = 0.142769   0.790322   0.066909
+                2    = 0.460838   0.053656   0.485506
+                3    = 0.763220   0.162037   0.074743
+                4    = 0.076238   0.573013   0.350748
+                5    = 0.078147   0.539971   0.381882
+                etc
+    
+   the pair probabilities are
+        
+
+

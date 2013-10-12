@@ -1,0 +1,7 @@
+preprocess_prog: LineSegment(1.00000999,1.0,1.0,2.0) was expected to preprocess to LineSegment(1.00000999,1.0,1.0,2.0) [incorrect answer]
+preprocess_prog: Intersect(LineSegment(~3.7,1.5,~3.7,1.5),LineSegment(~3.7,1.5,~3.7,1.5)) was expected to preprocess to Intersect(Point(~3.7,1.5),Point(~3.7,1.5)) [incorrect answer]
+preprocess_prog: Let ("x",LineSegment(~3.7,1.5,~3.7,1.5),LineSegment(~3.7,1.5,~3.7,1.5),) was expected to preprocess to Let ("x",Point(~3.7,1.5),Point(~3.7,1.5),) [incorrect answer]
+preprocess_prog: Shift(5.5,~1.2,LineSegment(~3.7,1.5,~3.7,1.5)) was expected to preprocess to Shift(5.5,~1.2,Point(~3.7,1.5)) [incorrect answer]
+preprocess_prog: Intersect(LineSegment(1.0,1.0,0.0,0.0),LineSegment(1.0,1.0,0.0,0.0)) was expected to preprocess to Intersect(LineSegment(0.0,0.0,1.0,1.0),LineSegment(0.0,0.0,1.0,1.0)) [incorrect answer]
+preprocess_prog: Let ("y",LineSegment(1.0,1.0,0.0,0.0),LineSegment(1.0,1.0,0.0,0.0),) was expected to preprocess to Let ("y",LineSegment(0.0,0.0,1.0,1.0),LineSegment(0.0,0.0,1.0,1.0),) [incorrect answer]
+preprocess_prog: Shift(1.0,1.0,LineSegment(1.0,1.0,0.0,0.0)) was expected to preprocess to Shift(1.0,1.0,LineSegment(0.0,0.0,1.0,1.0)) [incorrect answer]

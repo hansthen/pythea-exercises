@@ -1,0 +1,10 @@
+break fizz
+run -u 977868 < exploit.bytes
+info registers rbp
+x 0x7fffffffbe40 + 8
+x 0x7fffffffbe10 + 8
+p/x cookie
+p/x val
+break *0x401083
+cont
+disassemble

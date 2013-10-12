@@ -1,0 +1,114 @@
+1a. to the value on top of the stack
+ b. 
+
+
+2a. This is a convention. Some registers are saved by the caller. Some are saved by the callee.
+
+3a. 0x80003c
+ b. 0x800014
+ c. x is stored at 0x800038
+    y is stored at 0x800028
+ d.
+
+%esp    0x800040
+%ebp    0x800060    
+
+-- pushl %ebp
+0x800040    0x800060
+%esp        0x80003c
+
+-- movl %esp, %ebp
+%ebp        0x80003c    the base pointer now points to the top of the stack frame
+
+-- subl $40, %esp
+%esp        0x800014    allocates 40 bytes of stack space  0x80000e
+
+--leal  -4(%ebp), %eax
+%eax        0x800038    stores the address of x
+
+-- movl %eax, 8(%esp)
+0x80001c    0x800038    place it on the stack
+
+-- leal -8(%ebp), %eax
+%eax        0x800034    stores the address of y
+
+-- movl %eax, 4(%esp)
+0x800018    0x800034    place it on the stack
+
+-- movl $.LC0, (%esp)
+0x800014    0x300070
+
+After the call to scanf, the stack looks as follows:
+
+0x800040    0x0800600
+0x80003c    0x0060
+0x800038    0x53
+0x800034    0x46
+0x800030    ?
+0x80002c    ?
+0x800028    ?
+0x800024    ?
+0x800020    ?
+0x80001c    0x800038
+0x800018    0x800034
+0x800014    0x300070
+
+4. 
+
+struct {
+  char       *a;    4 bytes         4
+  short       b;    2 bytes         6
+  // 2 bytes padding                8
+  double      c;    8 bytes        16
+  char        d;    1 byte         17
+  // 3 bytes padding               20
+  float       e;    4 bytes        24
+  char        f;    1 byte         25
+  // 7 bytes padding               32
+  long long   g;    8 bytes        40
+  void       *h;    4 bytes        44
+} foo;
+
+44 bytes length in total
+
+struct {
+  double      c;    8 bytes         8
+  long long   g;    8 byte         16
+  char       *a;    4 bytes        20
+  float       e;    4 byte         24
+  void       *h;    4 byte         28
+  short       b;    2 bytes        30
+  char        d;    1 byte         31
+  char        f;    1 byte         32
+}
+a. see above
+b. 44 bytes
+c. see above
+d. I used sorting from larger datatypes to smaller datatypes
+
+5a. 
+ b.
+ c. Arguments are not passed on the stack, but passed in registers.
+    Because of this, there is no need to generate a location on the stack
+    for idx.
+ d. 5L
+
+6a. Those are the values of s1.a, s1.p and the address of result.
+ b. x
+    y
+   
+ c. create a variable for each structure member on the stack and pretend
+    each structure member was passed individually as a parameter
+ d. the caller creates storage for the structure and passes a pointer to 
+    that space to the caller.
+    the callee fills the memory space passed by the caller for the return
+    value.
+
+
+    
+   
+  
+    
+
+
+

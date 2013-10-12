@@ -1,0 +1,6 @@
+268502232
+
+268502248  A_protObj as I calculated it
+268502248  A_protObj as from label
+
+4199412    A_init checked

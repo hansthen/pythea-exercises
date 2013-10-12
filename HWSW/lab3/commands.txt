@@ -1,0 +1,6 @@
+break 137
+run -u 977068 < exploit.bytes
+info registers 
+p/x &buf
+p/x &global_value
+x/80b buf

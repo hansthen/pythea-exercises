@@ -1,0 +1,17 @@
+1a. (x << 4) + x
+ b. -((x << 3) - x)
+ c. (x << 6) - (x << 2)
+ d. ((x << 4) - (x << 7))
+
+2. Whether there is a problem depends on the intention of the code.
+   If the four least significant bytes have the same bit pattern as the
+   integer, the equation will evaluate to true, even if l and i do not
+   have the same value.
+
+3a. These are the names of functions in the module.  
+ b. sar, sal, shl
+ c. 
+ d. In those programs the names of the functions were stripped. They are
+    not necessary for the running of the program.
+
+4. 
