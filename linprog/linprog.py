@@ -12,7 +12,45 @@ class LinProg(object):
        self.z = z
        self.c = c
 
+   def initialize(self):
+       print "before initialization"
+       self.print_all()
+       # save z and c
+       self.old_N = self.N[:]
+       self.old_c = self.c[:]
+       self.old_z = self.z
+       # add x0 variable to the problem
+       self.N.append(0)
+       for row in self.A:
+           row.append(+1)
+       # 3. set z and c to 0 and -1
+       self.z = 0
+       self.c = [0] * len(self.c) + [-1]
+       # first pivoting step entering is x0, with leaving variable, the min(bs)
+       entering = 0
+       leaving = self.B[self.bs.index(min(self.bs))]
+       self.pivot(entering, leaving)
+       self.solve()
+
+       if 0 not in self.N:
+           raise ValueError("INFEASIBLE")
+       # 1. remove the 0 variable
+       index = self.N.index(0)
+       del self.N[index]
+       for row in self.A:
+           del row[index]
+       # 2. rewrite the original objective function. If any of them use basic variables: then we need to rewrite them
+       #    in terms of the non-basic variables.
+       print "N", self.old_N, self.N
+       print "c", self.old_c, self.c
+       print "z", self.old_z, self.z
+
    def solve(self):
+       # first we must test if the dictionary is feasible
+       # if any of the bs is negative, then we must first solve
+       # the aux problem.
+       if any(x < 0 for x in self.bs):
+           self.initialize()
        counter = 0
        try:
            entering = self.entering()
@@ -103,6 +141,10 @@ class LinProg(object):
            print >>sys.stderr, "%s %1.1fx%s" % (("+" if row[i] >= 0 else "-"), abs(row[i]), column),
        print >>sys.stderr
 
+   def print_all(self):
+       for row_i, var in enumerate(self.B):
+           self.print_row(var)
+       self.print_z()
 
    def entering(self):
        """Returns the first variable corresponding to c_i where c_i >= 0"""
