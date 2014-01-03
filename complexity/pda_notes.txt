@@ -1,0 +1,33 @@
+We need to show that
+(q, wx, S) ->* (q, x, alpha)
+iff S =>* w alpha
+
+basic step:
+alpha = S
+w = empty
+and S =>* S
+
+Inductive step
+(q, wx, S) ->* (q, x, alpha)
+
+Type 1: 
+(q, yax, S) ->* (q, ax, a alpha) -> (q, x, alpha)
+where ya = w.
+
+by the IH:
+S =>* ya alpha      
+but ya = w, so S =>* w alpha
+
+Type 2:
+(q, wx, S) ->* (q, x , A beta) -> (q, x, gamma beta)
+
+where A -> gamma is a production and alpha = gamma beta
+
+by the IH
+S =>* wA Beta
+
+Thus:
+S =>* w gamma beta = w alpha
+
+
+

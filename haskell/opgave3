@@ -1,0 +1,107 @@
+3.1
+- 7 is een waarde en een expressie
+- 7 + 3 is een expressie
+- 7 + x is een expressie
+- verdubbel 7 + x is een expressie
+
+3.2
+De twee rollen van typen in een programmeertaal:
+1. hulp voor de compiler welke operatie aan te roepen (pattern matching)
+2. geeft een contract aan welke methoden op instantie aangeroepen kunnen worden.
+3. Beperking welke waarden een expressie aan kan nemen.
+
+3.6
+let x = ['h', 'e', 'l', 'l', 'o']
+let x = "hello"
+let x = head ("hello":[])
+let x = "hell"++"o"++" "++"t"++"here"
+
+3.9
+*LE03> geefEen
+1
+*LE03> head [1..]
+1
+*LE03> :type ['a','b','c']
+['a','b','c'] :: [Char]
+*LE03> :type [not]
+[not] :: [Bool -> Bool]
+*LE03> :type [[],[1],[1,2],[1,2,3]]
+[[],[1],[1,2],[1,2,3]] :: Num a => [[a]]
+*LE03> :t "hello world"
+"hello world" :: [Char]
+
+3.11
+De lengte van een lijst is geen onderdeel van het type. Voor een tupel is dat wel zo.
+Alle elementen uit een lijst moeten hetzelfde type hebben. Voor een tupel is dat niet zo.
+
+3.12
+*LE03> :t [(("Jan"), 'm', (1962,8,18)), ("Wilma Jansen", 'v', (1968,12,8))] 
+[(("Jan"), 'm', (1962,8,18)), ("Wilma Jansen", 'v', (1968,12,8))]
+  :: (Num t2, Num t1, Num t) => [([Char], Char, (t, t1, t2))]
+
+3.13
+*LE03> f 10
+101
+*LE03> f 3
+10
+*LE03> :t f
+f :: Int -> Int
+
+3.14
+ongelijk (Int, Int, Int) -> Bool
+
+3.16
+
+a) De aanroep (f x) geeft een functie terug die een parameter teruggeeft (noem die voor het gemak f2).
+De (f x) y staat hiermee voor f2 y.
+
+b) Nee dat kan niet. De type signaturen zijn verschillend (en kunnen ook niet vergelijkbaar gecurried worden).
+
+3.17
+a)
+telOpC::Int->Int->Int
+b)
+telOpC 1   :: Int->Int
+telOpC 1 3 :: Int
+
+3.18
+
+machtTien::Int->Int
+machtTien->macht 10
+
+3.19
+Ja, dit is een polymorf type. Dit kan je zien omdat de typen als een variabele worden gespecificeerd.
+
+3.20
+Niet alle typen kunnen opgeteld worden. In de type variabele moet aangegeven worden dat `a` een numeriek type is.
+
+som::Sum a=>[a]->a
+
+3.21
+Polymorfie is een belangrijke eigenschap in statisch getypeerde talen. 
+
+Zelftoets
+1a) Een gecurryde functie is een functie die wordt samengesteld uit herhaalde aanroep met telkens 1 parameter.
+    De functies geven telkens een nieuwe functie terug die de volgende parameter aanneemt en een resultaat teruggeeft.
+ b) Een polymorfe functie is een functie die op verschillende datatypes werkt.
+ c) Een overloaded functie is een functie die verschillend geimplementeerd is afhankelijk van het datatype waar het mee aangeroepen wordt.
+
+Het verschil tussen een polymorfe operatie en een overloaded operatie:
+
+De + operatie kan resulteren in het verschillende code (bijvoorbeeld "string" + "string" in java geeft 
+hele andere code dan 1 + 1 of 1.0 + 1.0). Dat is overloading.
+
+Polymorf betekent in de basis dat dezelfde code hergebruikt wordt voor verschillende datatypes, zolang het datatype maar
+de operaties ondersteunt die nodig zijn voor de code. Wat in C++ een template genoemd wordt.
+
+
+
+
+
+
+
+
+
+
+
+

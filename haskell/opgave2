@@ -1,0 +1,28 @@
+1. (2 ^ 3) + 4
+   (2 * 3 + (4 * 5)
+   2 + (3 * (4 ^ 5))
+
+2.5a Omdat length 1 argument nodig heeft.
+   b Omdat drop twee argumenten nodig heeft.
+
+2.7a Dit geeft een compilatiefout (x is not in scope)
+2.8a Take neemt het eerste argument en neemt dit aantal aan elementen uit
+     de lijst die als tweede argument wordt gegeven.
+   b De lege lijst
+
+2.10c (double 2) `take` [1,2,3,4,5,6]
+
+2.11 Verkeerde aanhalingstekens om div.
+     a en xs zijn niet correct uitgelijnd.
+     N mag geen hoofdletter zijn.
+
+2.12 let mylast xs = xs !! (length xs - 1)
+     let mylast xs = head (reverse xs)
+
+Zelftoets:
+div rondt naar beneden af
+quot rondt naar 0 af
+
+2b let middelste xs = xs !! (length xs - 1 `div` 2)
+
+

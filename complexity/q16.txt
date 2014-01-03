@@ -1,0 +1,10 @@
+0001110111
+
+Transition 1: q, XZ0, 001110111
+Transition 2: q, XXZ0, 01110111
+Transition 3: q, XXXZ0, 1110111
+Transition 4: q, XXXZ0, 110111
+Transition 5: q, XXXZ0, 10111
+Transition 6: q, XXXZ0, 0111
+Transition 7: q, XXXXZ0, 111
+

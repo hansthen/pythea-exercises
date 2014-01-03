@@ -1,0 +1,11 @@
+4.9
+
+Opgave 4.9
+- ['a', _, _] matcht allen een lijst met drie elementen
+- ('a':_) matcht alleen een lijst die begint met 'a'.
+          een lijst in Haskell is opgebouwd uit cons cellen, zoals in scheme (data.[a])
+- []      de lege lijst
+- (_:_)   elke lijst die uit ten minste 1 element bestaat
+- (x:_)   elke lijst
+- (_:xs)  elke lijst
+

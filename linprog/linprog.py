@@ -13,7 +13,7 @@ class LinProg(object):
        self.c = c
 
    def initialize(self):
-       print "before initialization"
+       #print "before initialization"
        self.print_all()
        # save z and c
        self.old_N = self.N[:]
@@ -32,8 +32,9 @@ class LinProg(object):
        self.pivot(entering, leaving)
        self.solve()
 
-       if 0 not in self.N:
-           raise ValueError("INFEASIBLE")
+       print self.z
+       sys.exit(0)
+
        # 1. remove the 0 variable
        index = self.N.index(0)
        del self.N[index]
@@ -41,9 +42,9 @@ class LinProg(object):
            del row[index]
        # 2. rewrite the original objective function. If any of them use basic variables: then we need to rewrite them
        #    in terms of the non-basic variables.
-       print "N", self.old_N, self.N
-       print "c", self.old_c, self.c
-       print "z", self.old_z, self.z
+       #print "N", self.old_N, self.N
+       #print "c", self.old_c, self.c
+       #print "z", self.old_z, self.z
 
    def solve(self):
        # first we must test if the dictionary is feasible
@@ -59,19 +60,19 @@ class LinProg(object):
                self.pivot(entering, leaving)
                counter += 1
                entering = self.entering()
-           print self.z
-           print counter
-       except ValueError:
-           print "UNBOUNDED"
+           #print self.z
+           #print counter
+       except ValueError, e:
+           print "UNBOUNDED", e
 
    def pivot(self, entering, leaving):
        row_leaving = self.B.index(leaving)
        col_leaving = self.N.index(entering)
 
-       print >>sys.stderr, 'Before pivoting', entering, leaving
-       for row_i, var in enumerate(self.B):
-           self.print_row(var)
-       self.print_z()
+       #print >>sys.stderr, 'Before pivoting', entering, leaving
+       #for row_i, var in enumerate(self.B):
+       #    self.print_row(var)
+       #self.print_z()
 
        coeff = -self.A[row_leaving][col_leaving]
        factor = self.bs[row_leaving] / coeff
@@ -121,9 +122,10 @@ class LinProg(object):
        self.N[col_leaving] = leaving
 
        print >>sys.stderr, 'After pivoting'
-       for row_i, var in enumerate(self.B):
-           self.print_row(var)
-       self.print_z()
+       self.print_all()
+       #for row_i, var in enumerate(self.B):
+       #    self.print_row(var)
+       #self.print_z()
 
    def print_z(self):
        print >>sys.stderr, "z  = %1.1f" % (self.z),
@@ -148,13 +150,13 @@ class LinProg(object):
 
    def entering(self):
        """Returns the first variable corresponding to c_i where c_i >= 0"""
-       cs = [self.N[i] for i in range(len(self.c)) if self.c[i] > 0]
+       cs = [self.N[i] for i in range(len(self.c)) if self.c[i] > 1e-15]
        #print self.N, self.c
        return min(cs) if cs else None
 
    def leaving(self, entering):
        j = self.N.index(entering)
-       bounds = [self.bs[i]/-self.A[i][j] if self.A[i][j] < 0 else float('Inf') for i in range(self.m)]
+       bounds = [self.bs[i]/-self.A[i][j] if self.A[i][j] < 1e-15 else float('Inf') for i in range(self.m)]
 
        if all(bound == float('Inf') for bound in bounds):
            raise ValueError("Unbounded")
