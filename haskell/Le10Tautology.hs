@@ -20,7 +20,9 @@ data Prop = Const Bool
           | Var Char
           | Not Prop
           | And Prop Prop
+          | Or Prop Prop
           | Imply Prop Prop
+          | Equiv Prop Prop
 
 type Subst = Assoc Char Bool
 
@@ -35,6 +37,8 @@ eval s (Var x)     = find x s
 eval s (Not p)     = not (eval s p)
 eval s (And p q)   = eval s p && eval s q
 eval s (Imply p q) = eval s p <= eval s q
+eval s (Or p q)    = eval s p || eval s q
+eval s (Equiv p q) = eval s (Imply p q) && eval s (Imply q p)
 
 vars :: Prop -> [Char]
 vars (Const _)   = []

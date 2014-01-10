@@ -1,0 +1,31 @@
+9.1
+a   Een IO operatie met een Char als resultaat
+b   Een IO operatie met een () als (dummy) resultaat
+c   Een geparametriseerde IO operatie met een lijst van type variabele a als resultaat.
+d   Een geparametriseerde lijst van IO operaties.
+e   Een IO operatie met een IO operatie die een () als dummy waarde als resultaat geeft.
+
+9.5
+a   vraagNaam :: IO String
+
+9.6
+a   for :: Monad m => [a] -> (a -> m b) -> m ()
+
+9.7
+a   
+showCell board pos = if (isAlive board pos) then 'X' else '.'
+
+b
+showBoard board = [showCell board (x,y) | x <- [0..width], y <- [0..height]]
+
+
+Zelftoets
+1   readFile :: String -> IO String
+    writeFile :: String -> String -> IO ()
+
+2   
+
+ioio:: IO (IO a) -> IO a
+ioio a = do a' <- a
+
+    

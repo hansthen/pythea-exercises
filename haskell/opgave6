@@ -1,0 +1,4 @@
+H6 recursion
+1.
+let (^) n x | n == 0    = 1
+            | otherwise = x * x ^ (n - 1)

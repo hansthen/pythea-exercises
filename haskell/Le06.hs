@@ -14,6 +14,9 @@ import Prelude hiding
    )
 import Data.Char
 
+(^) x 0 = 1
+(^) x n = x * (x^(n-1))
+
 -- 6.1 Basic concepts
 
 factorial :: Int -> Int

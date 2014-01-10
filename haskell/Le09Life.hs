@@ -92,3 +92,4 @@ life b = do cls
 
 wait :: Int -> IO ()
 wait n = seqn [ return () | _ <- [1..n] ]
+

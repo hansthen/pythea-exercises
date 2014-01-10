@@ -9,6 +9,38 @@
 module Le10 where
 
 import Prelude hiding (Left, Right, flip)
+import Control.Monad
+
+-- Oefeningen
+{-
+mul :: Nat -> Nat -> Nat
+mul 0 _ = 0
+mul n x = x `add` mul (n - 1) x
+-}
+
+vindAlle :: Eq k => k -> Assoc k v -> [v]
+vindAlle k t = [v | (k', v) <- t, k == k']
+
+testGetal :: Int -> Int -> Maybe Int
+testGetal a n | 0 < a && a < n = Just a
+              | otherwise      = Nothing  
+            
+-- return :: v -> m v
+-- (>>=)  :: m a -> (a -> m b) -> m b
+
+data Option a = None | Some a
+
+instance Monad Option where
+  return v  = Some v
+  m >>= f   = case m of
+                Some v -> f v
+                otherwise -> None
+
+instance Show Option a where
+  show m = case m of
+             Some v -> show v
+             otherwise -> show "nothing"
+
 
 -- 10.1 Type declarations
 
@@ -86,7 +118,14 @@ t = Node (Node (Leaf 1) 3 (Leaf 4)) 5 (Node (Leaf 6) 7 (Leaf 9))
 
 occurs :: Int -> Tree -> Bool
 occurs m (Leaf n)     = m == n
-occurs m (Node l n r) = m == n || occurs m l || occurs m r
+occurs m (Node l n r) = m == n || if m < n then (occurs m l) else (occurs m r)
+
+{-
+occurs m (Node l n r) = case compare m n of
+                               LT -> occurs m l
+                               EQ -> True
+                               GT -> occurs m r
+-}
 
 flatten :: Tree -> [Int]
 flatten (Leaf n)     = [n]

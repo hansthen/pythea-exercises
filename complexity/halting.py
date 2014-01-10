@@ -10,7 +10,7 @@ def haltsp(fun, inp):
         return False
 
 def haltsp_(fun, inp):
-    """This function will loop if `fun` halts on input `inp` and halt otherwise"""
+    """This function will loop if `fun` halts on input `inp` and halts otherwise"""
     if haltsp(fun, inp):
         while True:
             pass

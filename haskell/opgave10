@@ -1,0 +1,46 @@
+mult::Nat -> Nat -> Nat
+mult 0 _ = 0
+mult n x = x `add` mult (n-1) x
+
+10.3.b      Nee 1.0 is zelf geen Shape
+
+10.4.a
+moves [Up, Up, Up, Left, Left] (2,3)
+
+10.4.b
+Aan de identity function
+
+10.5
+data Shape a = Circle a | Rect a a 
+
+10.7
+Maybe a
+a -> Maybe a
+
+10.8
+a   Nil
+b   Cons 1 Nil
+c   Cons 1 (Cons 2 Nil)
+d   Cons 1 (Cons 2 (Cons 3 Nil))
+
+10.13
+Conjunctie = Or
+Equivalentie is wederzijdse implicatie
+
+Hutton 10.8.8
+
+-- return :: v -> m v
+-- (>>=)  :: m a -> (a -> m b) -> m b
+
+instance Monad Maybe where
+  return v  = Just v
+  p >>= f   = case p of
+                Just v -> f v
+                otherwise -> Nothing
+instance Monad [] where
+  return v  = [v]
+  xs >>= f  = concat (map f xs)
+                
+               
+
+

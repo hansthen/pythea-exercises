@@ -1,0 +1,77 @@
+Opgave 5.1
+
+Prelude> let allemaalEven xs = not (any (\x -> x `mod` 2 /= 0) xs)
+Prelude> allemaalEven [1,2,3,4]
+False
+Prelude> allemaalEven [1..]
+False
+Prelude> allemaalEven [2,4,6,7]
+False
+Prelude> allemaalEven [2 * x | x <- [1..]]
+^CInterrupted.
+
+Alleen dit maakt geen gebruik van een list comprehension.
+
+let allemaalEven xs = length [x | x <- xs, mod x 2 /= 0 ] == 0
+
+let allemaalEven xs = foldr (&&) True [mod x 2 == 0 <- xs]
+
+Prelude> let bits = [0,1]; codes = [(b1, b2, b3) | b1 <- bits, b2 <- bits, b3 <-bits]
+Prelude> codes
+[(0,0,0),(0,0,1),(0,1,0),(0,1,1),(1,0,0),(1,0,1),(1,1,0),(1,1,1)]
+Prelude> let bin2dec xs = [b3 * 2^2 + b2 * 2 + b1 | (b3, b2, b1) <- xs] 
+Prelude> bin2dec codes
+[0,1,2,3,4,5,6,7]
+
+5.3
+let zoek xs = [x | x <- xs, x > 5, x < 10]
+
+5.4
+let voorkomens x xs = [x' | x' <- xs, x ==  x']
+let isIn x xs = length (voorkomens x xs) > 0
+ 
+5.5
+sorted loopt paarsgewijs door de lijst heen, eerst het eerste en tweede element,
+dan het tweede en derde element etc
+
+Als alle elementparen gesorteerd zijn, is de hele lijst ook gesorteerd.
+
+5.6
+Als in de lijst met indices length xs gebruikt wordt wordt een extra index waarde aan het einde teveel aangemaakt.
+Omdat zip beide waardes doorloopt totdat de kortste lijst is uitgeput heeft dit in de praktijk geen gevolgen.
+
+5.7
+let evenElementen xs = [x' | (x', i) <- zip xs [0..n], (mod i 2) == 1] where n = length xs - 1
+
+5.9
+a)
+let digitToInt c = Data.Char.ord c - Data.Char.ord '0'
+
+b) 
+let stringToInt s = foldr (+) 0 [digitToInt c * 10^i | (c,i) <- zip (reversed s) [0..]]
+
+Zelftoets Hutton:
+--------------------------------------------------------------------------------------------
+1.
+sum [i^2 | i <- [1..100]]
+
+2.
+let replicate n a = [a | i <- [1..n]]
+
+3.
+let pyths limit = [(x,y,z) | x<-range, y<-range, z<-range, x^2 + y^2 == z^2] where range = [1..limit]
+
+4. 
+let perfects limit = [i | i <- [..limit], sum (factors i) - 1 == i]
+
+5.
+concat [[(x,y) | y<-[3,4,5]] | x<-[1,2,3]]
+
+6.
+let find k t = [v|(k',v)<-t,k==k']
+let positions x xs = find x (zip xs [0..])
+
+7.
+let scalarproduct xs ys = sum [x * y | (x,y) <- zip xs ys]
+
+8. See Le05Caesar.hs

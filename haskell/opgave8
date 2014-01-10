@@ -1,0 +1,62 @@
+Opgave 8.2
+a   123
+b   12
+c   3
+d   error
+
+Opgave 8.3
+a   Dat is de invoer string
+b   Dit kan voor twee redenen zijn, het is ofwel een lijst met alle tokens, ofwel een token per aanroep
+c   Omdat er meerdere types tokens teruggegeven kunnen worden. In het meest makkelijke geval identifiers, strings en nummers.
+d   Dat is de resterende String die is overgebleven na het verwerken van het terugggeven token in `a`.
+
+Opgave 8.4
+a   String -> [(Int, String)]
+b   Char -> (String -> [(Bool, String)])
+c   a -> (String -> [(a, String)]
+d   (String -> [(a, String)]) -> (String -> [(a, String)])
+
+Opgave 8.5
+Duh
+
+Opgave 8.6
+
+(>>=) :: Parser a -> (a -> Parser b) -> Parser b
+
+De operator >>= heeft 2 argumenten nodig
+1. een Parser met type a.
+2. Een functie met een parameter met type a, die een Parser van type b teruggeeft.
+
+De operator geeft een Parser van het type b terug.
+
+Maar parser is zelf een functie van het type
+String -> ([a, String])
+
+Vergelijkbaar in python
+
+def parser(input):
+    # do something with the string
+    if okay:
+        return (value, remainder)  
+
+def combine(parser, function):
+    def combined(input):
+        result = parser(input):
+        if result:
+            v, out = result
+            return function(value)(out)
+
+8.7 Waarom zo ingwikkeld?
+
+8.11
+               "a"                   "Aa"             "ABC"             "13"
+digit          []                     []               []               [('1', "3")]
+lower        [('a', [])]              []               []               []
+upper          []               [('A', "a")]       [('A', "BC")]        []
+letter       [('a', [])]        [('A', "a")]       [('A', "BC")]        []
+alphanum     [('a', [])]        [('A', "a")]       [('A', "BC")]        [('1', "3")]
+
+8.12
+many heeft dezelfde functie als de Kleene *, terwijl many1 dezelfde functie heeft als de Kleene + operatie.
+
+

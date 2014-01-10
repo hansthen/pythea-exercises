@@ -59,3 +59,6 @@ count :: Char -> String -> Int
 count x xs = length [ x' | x' <- xs, x == x' ]
 
 -- 5.5 The Caesar cipher: zie Le05Cipher.hs
+
+allemaalEven xs = length [x | x `mod` 2 /= 0 <- xs] == 0
+
