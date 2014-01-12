@@ -7,7 +7,9 @@ import Data.Ord
 diceNames = ["1", "2", "3", "4", "5", "W"]
 diceScore = [1, 2, 3, 4, 5, 5]
 
-throw n = [diceNames !! (unsafePerformIO (randomRIO(0,5))) | _ <- [1..n]]
+-- throw n = [diceNames !! (unsafePerformIO (randomRIO(0,5))) | _ <- [1..n]]
+throw n = do dice <- [randomRIO(0,5) | _ <- [1..n]]
+             return (map (diceNames !!) dice)
 
 type TurnState = ([String], [String])
 type Player = TurnState -> Move
