@@ -4,39 +4,70 @@ import System.IO.Unsafe
 import Data.List
 import Data.Ord
 
-diceNames = ["1", "2", "3", "4", "5", "W"]
-diceScore = [1, 2, 3, 4, 5, 5]
+--------------------------------------------------------------------------------------
+-- Het dobbelen subsysteem
+--
+-- -----------------------------------------------------------------------------------
+
+-- TODO: gebruik data voor de dobbel stenen (en speler acties)
+stenen = ["1", "2", "3", "4", "5", "W"]
+scores = [1, 2, 3, 4, 5, 5]
 
 -- throw n = [diceNames !! (unsafePerformIO (randomRIO(0,5))) | _ <- [1..n]]
-throw n = do dice <- [randomRIO(0,5) | _ <- [1..n]]
-             return (map (diceNames !!) dice)
+werp n = do g <- newStdGen; return (map (stenen !!) (take n $ (randomRs (0, 5) g)))
 
-type TurnState = ([String], [String])
-type Player = TurnState -> Move
-type Move = String
+dobbel speler minimum = do let tactiek' = tactiek speler
+                           let hand = []
+                           putStrLn ("Speler " ++ show (speler + 1))
+                           eind <- tactiek' hand minimum
+                           return (score eind)
 
-initialize = (throw 8, [])
 
-action (dice, current) "q" = (dice, current)
-action (dice, current) a | elem a current = (dice, current)
+tactiek speler = if speler == 0 then tactiekMens else tactiekComp
 
-action (dice, current) a = (throw (8 - length new), new) where
-  new = current ++ [die | die <- dice, die == a]
+opties (worp, hand) = [steen | steen <- nub(worp), not(elem steen hand)]
+score hand = sum [scores !! (case (elemIndex d stenen) of Just i -> i)| d <- hand]
+klaar hand min = elem "W" hand && (score hand > min)
 
-allowed (dice, current) = [die | die <- nub(dice), not(elem die current)]
+tactiekComp hand min = do worp <- werp (8 - length hand)
+                          putStrLn  ("worp: " ++ show worp ++ " (" ++ show hand ++ ")")
+                          if length (opties (worp, hand)) == 0 then do
+                            putStrLn "dood (score is 0)"
+                            return []
+                          else do
+                            -- bepaal de actie voor de computer
+                            let actie = beste worp
+                            putStr ("Computer kiest " ++ actie ++ "\n")
+                            let hand' = hand ++ (filter (== actie) worp)
+                            if klaar hand' min then do
+                              putStr ("Computer stopt (score is " ++ show (score hand') ++ ")\n")
+                              return hand'
+                            else do
+                              putStr "\n"
+                              tactiekComp hand' min
 
-scores dice = [diceScore !! (case (elemIndex d diceNames) of Just i -> i)| d <- dice]
- 
-score (dice, current) = sum (scores current)
+beste worp = if elem "W" best then "W" else head best
+                where max = maximum [score (filter (==optie) worp) | optie <- stenen]
+                      best = [optie | optie <- stenen, score (filter (==optie) worp) == max]
 
-ready (dice, current) = elem "W" current && score (dice, current) > 20
 
-playCompChoice (dice, current) = if length options == 0 then "q" else (snd . maximumBy (comparing fst) $ zip (scores options) options) where
-                                           options = allowed (dice, current)
-
-playHumanChoice (dice, current) = do putStrLn ("worp: " ++ show dice ++ " (" ++ show current ++ ")")
-                                     putStr "pakken ? "
-                                     putStr "\n"
-                                     choice <- getChar
-                                     return [choice]
-
+tactiekMens hand min = do worp <- werp (8 - length hand) 
+                          putStrLn  ("worp: " ++ show worp ++ " (" ++ show hand ++ ")")
+                          if length (opties (worp, hand)) == 0 then do
+                            putStrLn "dood (score is 0)"
+                            return []
+                          else do
+                            putStr "pakken ? "
+                            actie <- getChar
+                            -- FIXME: we controleren nog niet op geldige input
+                            -- dus door een ongeldige waarde in te vullen kunnen
+                            -- we een nieuwe worp forceren
+                            let hand' = hand ++ (filter (== [actie]) worp)
+                            if klaar hand' min then do
+                              putStr ("\ndoorgaan (score is " ++ show (score hand') ++ ") ? ")
+                              doorgaan <- getChar
+                              putStr "\n"
+                              if doorgaan == 'j' then tactiekMens hand' min else return hand'
+                            else do
+                              putStr "\n"
+                              tactiekMens hand' min
