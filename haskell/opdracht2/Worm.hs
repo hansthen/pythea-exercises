@@ -6,9 +6,8 @@ import Data.Ord
 import System.IO.Unsafe
 
 -- om te testen gebruik ik leesGetal als dobbelen
-import Dobbelen (dobbel)
-
 -- Het dobbelspel voor deze ronde.
+import Dobbelen (dobbel)
 -- dobbel speler minimum = leesGetal
 
 tegels = [21..36]
