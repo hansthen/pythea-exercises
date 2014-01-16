@@ -11,6 +11,9 @@ module Figuur where
 import Data.Char
 import System.IO
 
+-- Used to display files using eog.
+import System.Cmd
+
 type Figuur a = Pos -> a
 
 type Pos = (Double, Double) -- (x, y)
@@ -24,10 +27,10 @@ schaakbord (x, y) = even (round x) == even (round y)
 type Dimensie = (Int, Int) -- (breedte, hoogte)
 
 coordinaten :: Dimensie -> [[(Int, Int)]]
-coordinaten = undefined
+coordinaten (x,y) = [[(x',y') | x' <- [0..(x-1)]] | y' <- [0..(y-1)]]
 
 render :: Dimensie -> Figuur a -> [[a]] 
-render = undefined
+render d f = [[f (naarPositie d (x,y)) | (x,y) <- row] | row <- coordinaten d]
 
 naarPositie :: Dimensie -> (Int, Int) -> Pos
 naarPositie d (x, y) = (fromIntegral x*2/b-1, 1-fromIntegral y*2/h)
@@ -36,10 +39,11 @@ naarPositie d (x, y) = (fromIntegral x*2/b-1, 1-fromIntegral y*2/h)
     h  = fromIntegral (snd d-1)
 
 boolChar :: Bool -> Char
-boolChar = undefined
+boolChar True = '@'
+boolChar False = '.'
 
 verander :: (a -> b) -> Figuur a -> Figuur b
-verander = undefined
+verander func fig = func . fig
 
 toon :: Figuur Bool -> IO ()
 toon = putStrLn . seqString . unlines . render (32, 20) . verander boolChar
@@ -51,34 +55,41 @@ seqString s = sum (map ord s) `seq` s
 -- 2. Basisvormen
 
 cirkel :: Double -> Figuur Bool
-cirkel = undefined
+cirkel r = \(x,y) -> x^2 + y^2 <= r^2
 
 vierkant :: Double -> Figuur Bool
-vierkant = undefined
+vierkant l = \(x,y) -> (x >= -l' && x <= l' && y >= -l' && y <= l')
+               where l' = l / 2
 
 driehoek :: Figuur Bool
-driehoek = undefined
+driehoek = \(x,y) -> abs(x) <= 0.5 - y/2 && y >= -1
+
+{-
+y = -1 x = 0
+y = 0  x = -1/2 +1/2
+y = 1  x = -1   +1 
+-}
 
 ------------------------------------------------------------------
 -- 3. Transformaties
 
 transform :: (Pos -> Pos) -> Figuur a -> Figuur a
-transform = undefined
+transform = \f figuur -> figuur . f
 
 verschuif :: (Double, Double) -> Figuur a -> Figuur a
-verschuif = undefined
+verschuif (dx,dy) = transform (\(x,y) -> (x-dx, y-dy))
 
 schaal :: Double -> Double -> Figuur a -> Figuur a
-schaal = undefined
+schaal fx fy = transform (\(x,y) -> (x/fx, y/fy))
 
 infixr 7 #
 infixr 7 //
 
 (#) :: (Double, Double) -> Figuur a -> Figuur a -- verschuiven
-(#) = undefined
+(#) = verschuif 
 
 (//) :: Double -> Figuur a -> Figuur a -- schalen
-(//) = undefined
+(//) = \f -> (schaal f f)
 
 ------------------------------------------------------------------
 -- 4. Transformaties met poolcoordinaten
@@ -95,34 +106,35 @@ fromPolar :: Polar -> Pos
 fromPolar (r, h) = (cos h*r, sin h*r)
 
 transPolar :: (Polar -> Polar) -> Figuur a -> Figuur a
-transPolar = undefined
+transPolar f = transform (fromPolar . f . toPolar)
 
 roteer :: Double -> Figuur a -> Figuur a
-roteer = undefined
+roteer dh = transPolar (\(r,h) -> (r, h+dh))
 
 krul :: Double -> Figuur a -> Figuur a
-krul = undefined
+krul d = transPolar (\(r,h) -> (r,h-d*r))
 
 ------------------------------------------------------------------
 -- 5. Composities
 
 compositie :: (a -> b -> c) -> Figuur a -> Figuur b -> Figuur c
-compositie = undefined
+compositie = \f figuur_a figuur_b -> \p -> f (figuur_a p) (figuur_b p)
 
 (<+>) :: Figuur Bool -> Figuur Bool -> Figuur Bool
-(<+>) = undefined
+(<+>) = compositie (||)
 
 (<*>) :: Figuur Bool -> Figuur Bool -> Figuur Bool
-(<*>) = undefined
+(<*>) = compositie (&&)
 
 (<->) :: Figuur Bool -> Figuur Bool -> Figuur Bool
-(<->) = undefined
+(<->) = compositie (\p q -> p && not q)
 
 ring :: Double -> Double -> Figuur Bool
-ring = undefined
+ring c1 c2 = (cirkel c2) <-> (cirkel c1)
 
 box :: Double -> Double -> Figuur Bool
-box = undefined
+box v1 v2 = (vierkant v2) <-> (vierkant v1)
+
 
 ------------------------------------------------------------------
 -- 6. Kleuren
@@ -140,29 +152,37 @@ zwart  = (0,0,0,1)
 wit    = (1,1,1,1)
 leeg   = (0,0,0,0) -- volledig doorzichtig
 
+-- Darn! Tuples are no functors, so no fmap on tuples.
 veranderKleur :: (Double -> Double) -> Kleur -> Kleur
-veranderKleur = undefined
+veranderKleur f = \(r,g,b,a) -> (f r, f g, f b, f a) 
 
 transparant :: Double -> Kleur -> Kleur
-transparant = undefined
+transparant d = veranderKleur (*d)
 
+-- (Darn!, darn!)
 zipKleur :: (Double -> Double -> Double) -> Kleur -> Kleur -> Kleur
-zipKleur = undefined
+zipKleur f = \(r1, g1, b1, a1) (r2, g2, b2, a2) -> (f r1 r2, f g1 g2, f b1 b2, f a1 a2)
 
 mixKleur :: Double -> Kleur -> Kleur -> Kleur
-mixKleur = undefined
+mixKleur d = zipKleur (\k1 k2 -> (d * k1 + (1 - d) * k2))
 
 ------------------------------------------------------------------
 -- 7. PPM rendering
 
+-- Gelukkig werkt eog *.ppm
+eog s = rawSystem "eog" [s]
+
 headerPPM :: Dimensie -> String
-headerPPM = undefined
+headerPPM (b,h) = "P6 " ++ show b ++ " " ++ show h ++ " 255" 
 
 kleurPPM :: Kleur -> String
-kleurPPM = undefined
+kleurPPM (r,g,b,_) = toC r:toC g:toC b:[]
+  where toC = chr . round . (*255)
 
 maakPPM :: Dimensie -> Figuur Kleur -> String
-maakPPM = undefined
+maakPPM d f = headerPPM d ++ "\n" ++ 
+              concat [kleurPPM (f (naarPositie d (x,y))) | 
+                      (x,y) <- concat (coordinaten d)]
 
 schrijf :: FilePath -> Figuur Kleur -> IO ()
 schrijf file = writeBinaryFile file . maakPPM (300, 300)
@@ -182,23 +202,26 @@ kleurMet = compositie (\k b -> if b then k else leeg)
 ------------------------------------------------------------------
 -- 8. Kleuren composities
 
+-- (Darn!, darn! No zip on tuples either.)
 over :: Kleur -> Kleur -> Kleur
-over = undefined
+over (r1,g1,b1,a1) (r2,g2,b2,a2) = (over' r1 r2, over' g1 g2, over' b1 b2, over' a1 a2)
+  where over' k1 k2 = k1+(k2*(1-a1))
 
 (<>) :: Figuur Kleur -> Figuur Kleur -> Figuur Kleur
-(<>) = undefined
+(<>) = compositie (over)
 
 stapel :: [Figuur Kleur] -> Figuur Kleur
-stapel = undefined
+stapel = foldr (<>) (const (0,0,0,0))
 
 ------------------------------------------------------------------
 -- 9. Gradienten
 
 gradient :: Kleur -> Kleur -> Figuur Kleur
-gradient = undefined
+gradient k1 k2 = \(x,y) -> mixKleur ((x+1)/2) k1 k2 
 
 gradientCirkel :: Kleur -> Kleur -> Figuur Kleur
-gradientCirkel = undefined
+gradientCirkel k1 k2 (x,y) = mixKleur ratio k1 k2
+  where ratio = min 1.0 (fst (toPolar (x,y)))
 
 ------------------------------------------------------------------
 -- 10. Voorbeelden
